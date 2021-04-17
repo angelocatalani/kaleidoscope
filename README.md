@@ -6,17 +6,7 @@
 
 The code in this repo is taken from the first 3 chapters of the excellent tutorial about `LLVM`: [My First Language Frontend with LLVM Tutorial](https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/LangImpl01.html#the-kaleidoscope-language).
 
-I tried to implement the 4th chapter but I got this linking error during the compilation:   
-
-```shell script
-NOTE: a missing vtable usually means the first non-inline virtual member function has no definition.
-ld: symbol(s) not found for architecture x86_64
-clang-9: error: linker command failed with exit code 1 (use -v to see invocation)
-```
-
-I think it is due to the presence of some legacy libraries used in the tutorial.
-
-I copied the first chapters tutorial's code and I did some modifications on the code:
+I copied the first chapters tutorial's code with some personal additions:
 - implemented the unittests
 - adopted an object oriented approach to replace the global static variables with instance variables
 - used the `Visitor` design pattern to generate the IR code
@@ -48,11 +38,6 @@ Common token names are:
 - literal: numeric, logical, textual, reference literals;
 - comment: line, block.
 
-### Abstract Syntax Tree
-TODO
-
-### Parser
-TODO
 
 ## Introduction to LLVM
 
@@ -329,13 +314,6 @@ It creates a `BasicBlock` object that it will contain all the body instructions.
 It populates the `named_values_` maps with the `IR` code for the function paramters.
 
 Finally, the body code is generated, and inserted inside the `module_` using `builder_.CreateRet(ret_val)`;
-
-
-#### VisitCall
-TODO
-
-#### VisitPrototype
-TODO
 
 ## Code Style
 
